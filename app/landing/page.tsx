@@ -15,7 +15,6 @@ const Landing = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    console.log("Clicked");
   };
 
   return (
@@ -35,6 +34,9 @@ const Landing = () => {
               isMenuOpen ? styles["menu-active"] : ""
             }`}
           >
+               <button className={styles["close-menu"]} onClick={toggleMenu}>
+              &times;
+            </button>
             <ul className={handlee.className}>
               <li>Home</li>
               <Link className={styles["link-com"]} href="/food">

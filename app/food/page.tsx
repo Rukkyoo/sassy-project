@@ -28,20 +28,20 @@ const Landing = () => {
   return (
     <div className={styles["food-area"]}>
       <div className={styles["food-area-title"]}>
-        <span id={selectedCategoryId}>Beef</span>
-        <span id={selectedCategoryId}>Chicken</span>
-        <span id={selectedCategoryId}>Dessert</span>
-        <span id={selectedCategoryId}>Lamb</span>
-        <span id={selectedCategoryId}>Miscellaneous</span>
-        <span id={selectedCategoryId}>Pasta</span>
-        <span id={selectedCategoryId}>Pork</span>
-        <span id={selectedCategoryId}>Seafood</span>
-        <span id={selectedCategoryId}>Side</span>
-        <span id={selectedCategoryId}>Starter</span>
-        <span id={selectedCategoryId}>Vegan</span>
-        <span id={selectedCategoryId}>Vegetarian</span>
-        <span id={selectedCategoryId}>Breakfast</span>
-        <span id={selectedCategoryId}>Goat</span>
+        <span >Beef</span>
+        <span >Chicken</span>
+        <span >Dessert</span>
+        <span >Lamb</span>
+        <span >Miscellaneous</span>
+        <span >Pasta</span>
+        <span >Pork</span>
+        <span >Seafood</span>
+        <span >Side</span>
+        <span >Starter</span>
+        <span >Vegan</span>
+        <span >Vegetarian</span>
+        <span >Breakfast</span>
+        <span >Goat</span>
       </div>
       {data.map((food) => (
     
