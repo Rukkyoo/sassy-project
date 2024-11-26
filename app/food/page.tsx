@@ -11,7 +11,7 @@ const handlee = Handlee({
 
 const Landing = () => {
   const [data, setData] = useState([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
@@ -20,63 +20,58 @@ const Landing = () => {
       .catch((error) => console.error("Error fetching data", error));
   }, []);
 
-  function handleClick(idCategory) {
-    setSelectedCategoryId((prevId) =>
-      prevId === idCategory ? null : idCategory
-    );
-  }
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredData = data.filter((food) =>
+    food.strCategory.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className={styles["food-area"]}>
-      <div className={styles["food-area-title"]}>
-        <span >Beef</span>
-        <span >Chicken</span>
-        <span >Dessert</span>
-        <span >Lamb</span>
-        <span >Miscellaneous</span>
-        <span >Pasta</span>
-        <span >Pork</span>
-        <span >Seafood</span>
-        <span >Side</span>
-        <span >Starter</span>
-        <span >Vegan</span>
-        <span >Vegetarian</span>
-        <span >Breakfast</span>
-        <span >Goat</span>
-      </div>
-      {data.map((food) => (
-    
-        <div key={food.idCategory} className={styles["food-area-table"]}>
-          <span className={styles["food-area-meal"]}>{food.strCategory}</span>
-          <img src={food.strCategoryThumb} alt="Food image" />
-          <span>{food.strCategoryDescription}</span>
+    <div className={styles.pageContainer}>
+      <div className={styles["food-area"]}>
+        <div className={styles["search-bar"]}>
+          <input
+            type="text"
+            placeholder="Search food category..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className={styles["search-input"]}
+          />
         </div>
-      ))}
+        <div className={styles["food-area-title"]}>
+          <span>Beef</span>
+          <span>Chicken</span>
+          <span>Dessert</span>
+          <span>Lamb</span>
+          <span>Miscellaneous</span>
+          <span>Pasta</span>
+          <span>Pork</span>
+          <span>Seafood</span>
+          <span>Side</span>
+          <span>Starter</span>
+          <span>Vegan</span>
+          <span>Vegetarian</span>
+          <span>Breakfast</span>
+          <span>Goat</span>
+        </div>
+        {filteredData.length > 0 ? (
+          filteredData.map((food) => (
+            <div key={food.idCategory} className={styles["food-area-table"]}>
+              <span className={styles["food-area-meal"]}>{food.strCategory}</span>
+              <img src={food.strCategoryThumb} alt="Food image" />
+              <span>{food.strCategoryDescription}</span>
+            </div>
+          ))
+        ) : (
+          <div className={styles["no-results"]}>
+            <p>Category missing</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default Landing;
-
-// <div className={handlee.className}>
-//      <div className={styles["food-area"]}>
-//      {data.map((food) => (
-//       <div className={styles["food-area-table"]} key={food.idCategory}>
-//         <div
-//           onClick={() => {
-//             handleClick(food.idCategory);
-//           }}
-//           className={styles["food-area-cate"]}
-//         >
-//          {food.strCategory}
-//        </div>
-//
-//        {/* {selectedCategoryId === food.idCategory && ( */}
-//          <div>
-//            <img src={food.strCategoryThumb} />
-//            <div>{food.strCategoryDescription}</div>
-//          </div>
-//        {/* )} */}
-//      </div>
-//    ))}
-//  </div>
-// </div>
