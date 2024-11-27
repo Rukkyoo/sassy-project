@@ -34,7 +34,7 @@ const Landing = () => {
               isMenuOpen ? styles["menu-active"] : ""
             }`}
           >
-               <button className={styles["close-menu"]} onClick={toggleMenu}>
+            <button className={styles["close-menu"]} onClick={toggleMenu}>
               &times;
             </button>
             <ul className={handlee.className}>
@@ -44,7 +44,9 @@ const Landing = () => {
               </Link>
               <li>Contact Us</li>
               <li>Blog</li>
-              <li>Landing</li>
+              <Link className={styles["link-com"]} href="/details">
+                <li>Meal Details</li>
+              </Link>
             </ul>
           </div>
           <div className={styles["login-btn"]}>
@@ -67,7 +69,9 @@ const Landing = () => {
             </p>{" "}
             <button className={handlee.className}>
               {" "}
-              <Link href="/food" className={styles["explore-menu"]}>Explore Menu</Link>
+              <Link href="/food" className={styles["explore-menu"]}>
+                Explore Menu
+              </Link>
             </button>
           </div>
           <div className={styles["hero-area-pic-container"]}>
