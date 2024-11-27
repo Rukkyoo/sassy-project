@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../page.module.scss";
 import { Handlee } from "next/font/google";
+import Link from "next/link";
 
 const handlee = Handlee({
   subsets: ["latin"],
@@ -30,6 +31,12 @@ const Landing = () => {
 
   return (
     <div className={styles.pageContainer}>
+      <div className={styles["food-area-nav"]}>
+        <h1>Menu</h1>
+        <Link href="/">
+          <h1 className={styles["food-details-home"]}>Go Back Home</h1>
+        </Link>
+      </div>
       <div className={styles["food-area"]}>
         <div className={styles["search-bar"]}>
           <input
@@ -56,19 +63,24 @@ const Landing = () => {
           <span>Breakfast</span>
           <span>Goat</span>
         </div>
-        {filteredData.length > 0 ? (
-          filteredData.map((food) => (
-            <div key={food.idCategory} className={styles["food-area-table"]}>
-              <span className={styles["food-area-meal"]}>{food.strCategory}</span>
-              <img src={food.strCategoryThumb} alt="Food image" />
-              <span>{food.strCategoryDescription}</span>
+        <div className={styles["food-area-table-container"]}>
+          {" "}
+          {filteredData.length > 0 ? (
+            filteredData.map((food) => (
+              <div key={food.idCategory} className={styles["food-area-table"]}>
+                <span className={styles["food-area-meal"]}>
+                  {food.strCategory}
+                </span>
+                <img src={food.strCategoryThumb} alt="Food image" />
+                <span>{food.strCategoryDescription}</span>
+              </div>
+            ))
+          ) : (
+            <div className={styles["no-results"]}>
+              <p>Category missing</p>
             </div>
-          ))
-        ) : (
-          <div className={styles["no-results"]}>
-            <p>Category missing</p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

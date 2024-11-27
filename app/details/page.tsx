@@ -2,6 +2,7 @@
 
 import styles from "../page.module.scss";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Details = () => {
   const [data, setData] = useState([]);
@@ -15,11 +16,25 @@ const Details = () => {
 
   return (
     <div className={styles["food-details-container"]}>
-      <h1>Meal Details</h1>
+      <div className={styles["food-details-nav"]}>
+        <h1>Meal Details</h1>
+        <Link href="/">
+          <h1>Go Back Home</h1>
+        </Link>
+      </div>
+
       {data.map((meals) => {
         return (
           <div className={styles["food-details-container"]} key={meals.idMeal}>
-            <img src={meals.strMealThumb} alt={`Picture of ${meals.strMeal}`} />
+            <div className={styles["food-image-container"]}>
+              {" "}
+              <img
+                className={styles["food-image"]}
+                src={meals.strMealThumb}
+                alt={`Picture of ${meals.strMeal}`}
+              />
+            </div>
+
             <span>Meal: {meals.strMeal}</span>
             <span>Category: {meals.strCategory}</span>
             <span>Area: {meals.strArea}</span>

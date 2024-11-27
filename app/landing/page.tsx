@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "../page.module.scss";
+import React from "react";
+import styles from "../page.module.scss"
 import Link from "next/link";
 import { Handlee } from "next/font/google";
+import Navbar from "../navbar";
 
 const handlee = Handlee({
   subsets: ["latin"],
@@ -11,50 +12,10 @@ const handlee = Handlee({
 });
 
 const Landing = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle menu
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <div className={styles.page}>
       <div className={styles["body-div"]}>
-        <nav className={styles["nav-bar"]}>
-          <div>
-            <h1 className={handlee.className}>GEHRICTH</h1>
-          </div>
-          <div className={styles["hamburger-menu"]} onClick={toggleMenu}>
-            <div className={styles["bar"]}></div>
-            <div className={styles["bar"]}></div>
-            <div className={styles["bar"]}></div>
-          </div>
-          <div
-            className={`${styles["menu-links"]} ${
-              isMenuOpen ? styles["menu-active"] : ""
-            }`}
-          >
-            <button className={styles["close-menu"]} onClick={toggleMenu}>
-              &times;
-            </button>
-            <ul className={handlee.className}>
-              <li>Home</li>
-              <Link className={styles["link-com"]} href="/food">
-                <li>Food</li>
-              </Link>
-              <li>Contact Us</li>
-              <li>Blog</li>
-              <Link className={styles["link-com"]} href="/details">
-                <li>Meal Details</li>
-              </Link>
-            </ul>
-          </div>
-          <div className={styles["login-btn"]}>
-            <p className={handlee.className}>Login/Registration</p>
-            <p className={styles["separator"]}>|</p>
-            <p className={handlee.className}>Book Table</p>
-          </div>
-        </nav>
+        <Navbar />  
         <div className={styles["hero-area"]}>
           <div className={styles["hero-area-text"]}>
             <h5>Chase The New Flavour</h5>
