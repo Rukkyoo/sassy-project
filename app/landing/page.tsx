@@ -4,7 +4,7 @@ import React from "react";
 import styles from "../page.module.scss"
 import Link from "next/link";
 import { Handlee } from "next/font/google";
-import Navbar from "../navbar";
+import Navbar from "../Navbar";
 
 const handlee = Handlee({
   subsets: ["latin"],
