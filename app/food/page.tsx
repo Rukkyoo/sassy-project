@@ -2,13 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "../page.module.scss";
-import { Handlee } from "next/font/google";
+
 import Link from "next/link";
 
-const handlee = Handlee({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 
 const Landing = () => {
   const [data, setData] = useState([]);
